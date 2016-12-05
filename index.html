@@ -5,14 +5,76 @@
     <meta charset="utf-8">
     <title>D3 tutorial</title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!--<style>
+    .chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>-->
 </head>
 
 <body>
+    <!--<p>hi</p> try running console.log(d3.selectAll("p"));
     <p>hi</p>
     <p>hi</p>
     <p>hi</p>
-    <p>hi</p>
-    <p>hi</p>
+    <p>hi</p>-->
+
+    <!--<div class="chart"> //run with style to create basic horizontal bar graph
+  <div style="width: 40px;">4</div>
+  <div style="width: 80px;">8</div>
+  <div style="width: 150px;">15</div>
+  <div style="width: 160px;">16</div>
+  <div style="width: 230px;">23</div>
+  <div style="width: 420px;">42</div>
+</div>-->
+
+
+
+
+    <div id="viz"></div> <!-- Couple with bottom script to create a circle that animates when clicked on/hovered over-->
+    <script type="text/javascript">
+        var sampleSVG = d3.select("#viz")
+            .append("svg")
+            .attr("width", 100)
+            .attr("height", 100);
+
+        sampleSVG.append("circle")
+            .style("stroke", "gray")
+            .style("fill", "white")
+            .attr("r", 40)
+            .attr("cx", 50)
+            .attr("cy", 50)
+            .on("mouseover", function() {
+                d3.select(this).style("fill", "aliceblue");
+            })
+            .on("mouseout", function() {
+                d3.select(this).style("fill", "white");
+            });
+        .on("mousedown", animate);
+
+        function animateFirstStep() {
+            d3.select(this)
+                .transition()
+                .delay(0)
+                .duration(1000)
+                .attr("r", 10)
+                .each("end", animateSecondStep);
+        };
+
+        function animateSecondStep() {
+            d3.select(this)
+                .transition()
+                .duration(1000)
+                .attr("r", 40);
+        };
+    </script>
 </body>
 
 </html>
